@@ -22,28 +22,99 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+	<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyA4b4CbFFviZWCbc7NlIoS0snf85ip0iaQ",
+		authDomain: "fbla-membership-tracker.firebaseapp.com",
+		databaseURL: "https://fbla-membership-tracker.firebaseio.com",
+		projectId: "fbla-membership-tracker",
+		storageBucket: "fbla-membership-tracker.appspot.com",
+		messagingSenderId: "64250080468",
+		appId: "1:64250080468:web:8789ad51d5f91f599b1f41",
+		measurementId: "G-V6N9YLF1NK"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+	</script>
+
+
+
 	
 	<div class="limiter">
+		
 		<div class="container-table100">
 			<div class="wrap-table100">
-					<div class="table">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Name</th>
+								<th class="column2">ID Number</th>
+								<th class="column3">CSA Category</th>
+								<th class="column4">Total Hours</th>
+								<th class="column5">Total Entries</th>
+								<th class="column6">Grade</th>
+								<th class="column7">Prediction</th>
+							</tr>
+						</thead>
+						<tbody>
+								{%for id_number in id_number_list%}
+									<tr>
+										<tr> <td class='column1'>{{name_list[id_number_list.index(id_number)]}}</td> <td class='column2'>{{id_number}}</td><td class='column3'>{{csa_list[id_number_list.index(id_number)]}}</td><td class='column4'>{{hours_list[id_number_list.index(id_number)]}}</td> <td class='column5'>{{entries_list[id_number_list.index(id_number)]}}</td><td class='column6'>{{grade_list[id_number_list.index(id_number)]}}</td><td class='column7'>{{prediction_list[id_number_list.index(id_number)]}}</td></tr>
+									</tr>
+								{% endfor %}	
+						</tbody>
+					</table>
+				</div>
+				
+			</div>
+			<div class="wrap-table100">
+					<div class="table" id = "table">
 
 						<div class="row header">
 							<div class="cell">
-								Full Name
+								Activity
 							</div>
 							<div class="cell">
-								Age
+								Date
 							</div>
 							<div class="cell">
-								Job Title
+								Points Available
 							</div>
 							<div class="cell">
-								Location
+								Points Earned
 							</div>
 						</div>
-
-						<div class="row">
+						
+						<div class = "row" id = "tablebody"></div>
+						<tbody>
+						{%for i in 6%}
+							<div class="row">
+								<div class="cell" data-title="Full Name">
+									Vincent Williamson
+								</div>
+								<div class="cell" data-title="Age">
+									31
+								</div>
+								<div class="cell" data-title="Job Title">
+									iOS Developer
+								</div>
+								<div class="cell" data-title="Location">
+									Washington
+								</div>
+							</div>	
+						{% endfor %}	
+					</tbody>
+						<!-- <div class="row">
 							<div class="cell" data-title="Full Name">
 								Vincent Williamson
 							</div>
@@ -161,15 +232,35 @@
 							<div class="cell" data-title="Location">
 								Somerville, MA
 							</div>
-						</div>
+						</div> -->
 
 					</div>
 			</div>
 		</div>
 	</div>
 
-
-	
+	<!-- <script>
+		var x =""
+		var i
+		for (i=1; i<=6; i++) {
+		  x = x + "<div class='row'>" + 
+						"<div class='cell' data-title='Activity'>" +
+							"September Meeting" +
+						"</div>" +
+						"<div class='cell' data-title='Date'>" + 
+							"09/12/2020" + 
+						"</div>" + 
+						"<div class='cell' data-title='Points Available'>" + 
+							"5" + 
+						"</div>" + 
+						"<div class='cell' data-title='Points Earned'>" +
+							i + 
+						"</div>" + 
+					"</div>"
+		}
+		document.getElementById("tablebody").innerHTML = x;
+	</script>
+	 -->
 
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
