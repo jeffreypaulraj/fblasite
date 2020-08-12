@@ -138,11 +138,7 @@
             var name = nameField.value
 
             var promise = auth.createUserWithEmailAndPassword(email,password)
-            promise.catch(e => {
-                alert(e.message)
-                created = false
-            })
-            if(created == true){
+            promise.then(function(result){
                 var encoded = window.btoa(id)
                 database.ref().child('/2020-21/' + id).set({
                     Name: name,
@@ -151,7 +147,21 @@
                     TotalPoints: 0
                 })
                 window.location.replace("tracker/tracker.html?id="+encoded);
-            }
+            })
+            .catch( function(e) {
+                alert(e.message)
+                created = false
+            })
+            // if(created == true){
+            //     var encoded = window.btoa(id)
+            //     database.ref().child('/2020-21/' + id).set({
+            //         Name: name,
+            //         Grade: grade,
+            //         Email: email,
+            //         TotalPoints: 0
+            //     })
+            //     window.location.replace("tracker/tracker.html?id="+encoded);
+            // }
         }
 
     </script>

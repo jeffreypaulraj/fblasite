@@ -129,16 +129,16 @@
            
 
             var promise = auth.signInWithEmailAndPassword(email,password)
-            promise
-            .catch( e => {
-                alert(e.message)
-                worked = false
-            })
-            if(worked == true){
+            promise.then(function(result){
                 var id = email.slice(0,8)
                 var encoded = btoa(id)
                 window.location.replace("tracker/tracker.html?id=" + encoded);
-            }
+            })
+            .catch( function(e) {
+                alert(e.message)
+                worked = false
+            })
+            
         }
 
     </script>
