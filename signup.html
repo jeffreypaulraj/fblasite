@@ -137,31 +137,32 @@
             var grade = gradeField.value
             var name = nameField.value
 
-            var promise = auth.createUserWithEmailAndPassword(email,password)
-            promise.then(function(result){
-                var encoded = window.btoa(id)
-                database.ref().child('/2020-21/' + id).set({
-                    Name: name,
-                    Grade: grade,
-                    Email: email,
-                    TotalPoints: 0
+            if(id == "" || email == "" || grade == "" || password == "" || name == "" ){
+                alert("Please Fill Out All Fields!")
+            }
+            else if(email.slice(8,email.length) != "@sbstudents.org"){
+                alert("Please use your sbstudents email")
+            }
+            else if(email.slice(0,8) != id){
+                alert("Please use id number which corresponds to your email")
+            }
+            else{
+                var promise = auth.createUserWithEmailAndPassword(email,password)
+                promise.then(function(result){
+                    var encoded = window.btoa(id)
+                    database.ref().child('/2020-21/' + id).set({
+                        Name: name,
+                        Grade: grade,
+                        Email: email,
+                        TotalPoints: 0
+                    })
+                    window.location.replace("tracker/tracker.html?id="+encoded);
                 })
-                window.location.replace("tracker/tracker.html?id="+encoded);
-            })
-            .catch( function(e) {
-                alert(e.message)
-                created = false
-            })
-            // if(created == true){
-            //     var encoded = window.btoa(id)
-            //     database.ref().child('/2020-21/' + id).set({
-            //         Name: name,
-            //         Grade: grade,
-            //         Email: email,
-            //         TotalPoints: 0
-            //     })
-            //     window.location.replace("tracker/tracker.html?id="+encoded);
-            // }
+                .catch( function(e) {
+                    alert(e.message)
+                    created = false
+                })
+            }
         }
 
     </script>
