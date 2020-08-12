@@ -46,38 +46,15 @@
 	firebase.analytics();
 	</script>
 
-
-
 	
 	<div class="limiter">
-		
+
 		<div class="container-table100">
+
 			<div class="wrap-table100">
-				<div class="table100">
-					<table>
-						<thead>
-							<tr class="table100-head">
-								<th class="column1">Name</th>
-								<th class="column2">ID Number</th>
-								<th class="column3">CSA Category</th>
-								<th class="column4">Total Hours</th>
-								<th class="column5">Total Entries</th>
-								<th class="column6">Grade</th>
-								<th class="column7">Prediction</th>
-							</tr>
-						</thead>
-						<tbody>
-								{%for id_number in id_number_list%}
-									<tr>
-										<tr> <td class='column1'>{{name_list[id_number_list.index(id_number)]}}</td> <td class='column2'>{{id_number}}</td><td class='column3'>{{csa_list[id_number_list.index(id_number)]}}</td><td class='column4'>{{hours_list[id_number_list.index(id_number)]}}</td> <td class='column5'>{{entries_list[id_number_list.index(id_number)]}}</td><td class='column6'>{{grade_list[id_number_list.index(id_number)]}}</td><td class='column7'>{{prediction_list[id_number_list.index(id_number)]}}</td></tr>
-									</tr>
-								{% endfor %}	
-						</tbody>
-					</table>
-				</div>
-				
-			</div>
-			<div class="wrap-table100">
+				<h1>Jeffrey Paulraj</h1>
+				<h3>Your Total Points: 0</h3>
+
 					<div class="table" id = "table">
 
 						<div class="row header">
@@ -96,171 +73,212 @@
 						</div>
 						
 						<div class = "row" id = "tablebody"></div>
-						<tbody>
-						{%for i in 6%}
+							
 							<div class="row">
-								<div class="cell" data-title="Full Name">
-									Vincent Williamson
+								<div class="cell" data-title="Activity">
+									September Meeting
 								</div>
-								<div class="cell" data-title="Age">
-									31
+								<div class="cell" data-title="Date">
+									09/01/2020
 								</div>
-								<div class="cell" data-title="Job Title">
-									iOS Developer
+								<div class="cell" data-title="Points Available">
+									5
 								</div>
-								<div class="cell" data-title="Location">
-									Washington
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "septmeeting">
 								</div>
 							</div>	
-						{% endfor %}	
-					</tbody>
-						<!-- <div class="row">
-							<div class="cell" data-title="Full Name">
-								Vincent Williamson
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									October Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									10/01/2020
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "octmeeting">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									Parent's Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									10/01/2020
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "octparentmeeting">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									November Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									11/01/2020
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "novmeeting">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									December Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									12/01/2020
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "decmeeting">
+								</div>
 							</div>
-							<div class="cell" data-title="Age">
-								31
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									RCE Participation
+								</div>
+								<div class="cell" data-title="Date">
+									12/01/2020
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "rce">
+								</div>
 							</div>
-							<div class="cell" data-title="Job Title">
-								iOS Developer
-							</div>
-							<div class="cell" data-title="Location">
-								Washington
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="cell" data-title="Full Name">
-								Joseph Smith
-							</div>
-							<div class="cell" data-title="Age">
-								27
-							</div>
-							<div class="cell" data-title="Job Title">
-								Project Manager
-							</div>
-							<div class="cell" data-title="Location">
-								Somerville, MA
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="cell" data-title="Full Name">
-								Justin Black
-							</div>
-							<div class="cell" data-title="Age">
-								26
-							</div>
-							<div class="cell" data-title="Job Title">
-								Front-End Developer
-							</div>
-							<div class="cell" data-title="Location">
-								Los Angeles
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="cell" data-title="Full Name">
-								Sean Guzman
-							</div>
-							<div class="cell" data-title="Age">
-								25
-							</div>
-							<div class="cell" data-title="Job Title">
-								Web Designer
-							</div>
-							<div class="cell" data-title="Location">
-								San Francisco
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="cell" data-title="Full Name">
-								Keith Carter
-							</div>
-							<div class="cell" data-title="Age">
-								20
-							</div>
-							<div class="cell" data-title="Job Title">
-								Graphic Designer
-							</div>
-							<div class="cell" data-title="Location">
-								New York, NY
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="cell" data-title="Full Name">
-								Austin Medina
-							</div>
-							<div class="cell" data-title="Age">
-								32
-							</div>
-							<div class="cell" data-title="Job Title">
-								Photographer
-							</div>
-							<div class="cell" data-title="Location">
-								New York
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="cell" data-title="Full Name">
-								Vincent Williamson
-							</div>
-							<div class="cell" data-title="Age">
-								31
-							</div>
-							<div class="cell" data-title="Job Title">
-								iOS Developer
-							</div>
-							<div class="cell" data-title="Location">
-								Washington
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="cell" data-title="Full Name">
-								Joseph Smith
-							</div>
-							<div class="cell" data-title="Age">
-								27
-							</div>
-							<div class="cell" data-title="Job Title">
-								Project Manager
-							</div>
-							<div class="cell" data-title="Location">
-								Somerville, MA
-							</div>
-						</div> -->
-
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									January Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "janmeeting">
+								</div>
+							</div>		
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									February Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									02/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "febmeeting">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									March Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									03/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "marmeeting">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									SLC Participation
+								</div>
+								<div class="cell" data-title="Date">
+									03/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "slc">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									April Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									04/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "aprmeeting">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									May Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									05/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "maymeeting">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									March of Dimes
+								</div>
+								<div class="cell" data-title="Date">
+									05/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									10
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "mod">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									June Meeting
+								</div>
+								<div class="cell" data-title="Date">
+									06/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "text" id = "junmeeting">
+								</div>
+							</div>	
+							<button id = "submitButton">Save Changes</button>
 					</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- <script>
-		var x =""
-		var i
-		for (i=1; i<=6; i++) {
-		  x = x + "<div class='row'>" + 
-						"<div class='cell' data-title='Activity'>" +
-							"September Meeting" +
-						"</div>" +
-						"<div class='cell' data-title='Date'>" + 
-							"09/12/2020" + 
-						"</div>" + 
-						"<div class='cell' data-title='Points Available'>" + 
-							"5" + 
-						"</div>" + 
-						"<div class='cell' data-title='Points Earned'>" +
-							i + 
-						"</div>" + 
-					"</div>"
-		}
-		document.getElementById("tablebody").innerHTML = x;
+	<script>
+		document.getElementById("septmeeting").value  = 5
 	</script>
-	 -->
 
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
