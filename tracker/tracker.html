@@ -295,7 +295,6 @@
 				if(id == childSnapshot.key){
 
 					nameField.innerText = childData['Name']
-					alert(childData['Name'])
 					document.getElementById("septmeeting").value = childData['Membership']['SeptemberMeeting']
 					document.getElementById("octmeeting").value = childData['Membership']['OctoberMeeting']
 					document.getElementById("novmeeting").value = childData['Membership']['NovemberMeeting']
@@ -334,9 +333,9 @@
 				SLC:document.getElementById("slc").value ,
 				MOD:document.getElementById("mod").value 
 			})
-			database.ref(id).set({
-				TotalPoints: totalPoints
-			})
+			// database.ref(id).set({
+			// 	TotalPoints: totalPoints
+			// })
 			alert("Your Membership Points have been saved Succesfully!")
 			location.reload()
 		}
