@@ -38,7 +38,7 @@
 	</script>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('static/signin/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('tracker/signin/images/bg-01.jpg');">
 			<div class="wrap-login100">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-account-o"></i>
@@ -52,7 +52,7 @@
 					
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter Email Address">
-						<input class="input100" type="text" id="emailaddress" placeholder="Username">
+						<input class="input100" type="text" id="emailaddress" placeholder="Email Address">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
@@ -123,16 +123,22 @@
 
         var signInButton = document.getElementById("signinbutton")
         function signIn(){
+            var worked = true
             var email = emailField.value
             var password = passwordField.value
            
 
             var promise = auth.signInWithEmailAndPassword(email,password)
-            promise.catch(
-                e => alert(e.message),
-            )
-                
-                window.location.replace("tracker/tracker.html");
+            promise
+            .catch( e => {
+                alert(e.message)
+                worked = false
+            })
+            if(worked == true){
+                var id = email.slice(0,8)
+                var encoded = btoa(id)
+                window.location.replace("tracker/tracker.html?id=" + encoded);
+            }
         }
 
     </script>

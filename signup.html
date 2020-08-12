@@ -130,7 +130,7 @@
 
         var signUpButton = document.getElementById("signupbutton")
         function signUp(){
-            var created = null
+            var created = true
             var email = emailField.value
             var password = passwordField.value
             var id = idField.value
@@ -138,17 +138,20 @@
             var name = nameField.value
 
             var promise = auth.createUserWithEmailAndPassword(email,password)
-            promise.catch(
-                e => alert(e.message),
+            promise.catch(e => {
+                alert(e.message)
                 created = false
-            )
-            // if(created == null){
+            })
+            if(created == true){
+                var encoded = window.btoa(id)
                 database.ref(id).set({
                     Name: name,
                     Grade: grade,
-                    Email: email
+                    Email: email,
+                    TotalPoints: 0
                 })
-                window.location.replace("tracker/tracker.html");
+                window.location.replace("tracker/tracker.html?id="+encoded);
+            }
         }
 
     </script>

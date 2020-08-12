@@ -22,29 +22,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
-
-	<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
-
-	<script>
-	// Your web app's Firebase configuration
-	var firebaseConfig = {
-		apiKey: "AIzaSyA4b4CbFFviZWCbc7NlIoS0snf85ip0iaQ",
-		authDomain: "fbla-membership-tracker.firebaseapp.com",
-		databaseURL: "https://fbla-membership-tracker.firebaseio.com",
-		projectId: "fbla-membership-tracker",
-		storageBucket: "fbla-membership-tracker.appspot.com",
-		messagingSenderId: "64250080468",
-		appId: "1:64250080468:web:8789ad51d5f91f599b1f41",
-		measurementId: "G-V6N9YLF1NK"
-	};
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
-	firebase.analytics();
-	</script>
+	
 
 	
 	<div class="limiter">
@@ -52,8 +30,8 @@
 		<div class="container-table100">
 
 			<div class="wrap-table100">
-				<h1>Jeffrey Paulraj</h1>
-				<h3>Your Total Points: 0</h3>
+				<h1 id = "nameField">Name</h1>
+				<h3 id = "pointsField"> Your Total Points: 0</h3>
 
 					<div class="table" id = "table">
 
@@ -113,7 +91,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "octparentmeeting">
+									<input type = "text" id = "parentmeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -270,14 +248,92 @@
 									<input type = "text" id = "junmeeting">
 								</div>
 							</div>	
-							<button id = "submitButton">Save Changes</button>
+							<button id = "submitButton" onclick="saveChanges()">Save Changes</button>
 					</div>
 			</div>
 		</div>
 	</div>
 
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+	
 	<script>
-		document.getElementById("septmeeting").value  = 5
+	    // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA4b4CbFFviZWCbc7NlIoS0snf85ip0iaQ",
+            authDomain: "fbla-membership-tracker.firebaseapp.com",
+            databaseURL: "https://fbla-membership-tracker.firebaseio.com",
+            projectId: "fbla-membership-tracker",
+            storageBucket: "fbla-membership-tracker.appspot.com",
+            messagingSenderId: "64250080468",
+            appId: "1:64250080468:web:8789ad51d5f91f599b1f41",
+            measurementId: "G-V6N9YLF1NK"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const auth = firebase.auth();
+        const database = firebase.database()
+
+       
+		var encoded = parent.document.URL.substring(parent.document.URL.indexOf('id=') + 3, parent.document.URL.length)
+		var id = window.atob(encoded)
+		
+		var nameField = document.getElementById("nameField")
+		var pointsField = document.getElementById("pointsField")
+
+		database.ref('/').once('value', function(snapshot){
+			snapshot.forEach(function(childSnapshot){
+				var childData = childSnapshot.val()
+				var totalPoints = 0
+
+				nameField.innerText = childData['Name']
+				pointsField.innerText = "Total Points: " + childData['TotalPoints']
+				totalPoints+=parseInt(document.getElementById("septmeeting").value = childData['Membership']['SeptemberMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("octmeeting").value = childData['Membership']['OctoberMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("novmeeting").value = childData['Membership']['NovemberMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("decmeeting").value = childData['Membership']['DecemberMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("janmeeting").value = childData['Membership']['JanuaryMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("febmeeting").value = childData['Membership']['FebruaryMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("marmeeting").value = childData['Membership']['MarchMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("aprmeeting").value = childData['Membership']['AprilMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("maymeeting").value = childData['Membership']['MayMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("junmeeting").value = childData['Membership']['JuneMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("parentmeeting").value = childData['Membership']['ParentMeeting']) || 0
+				totalPoints+=parseInt(document.getElementById("rce").value = childData['Membership']['RCE']) || 0
+				totalPoints+=parseInt(document.getElementById("slc").value = childData['Membership']['SLC']) || 0
+				totalPoints+=parseInt(document.getElementById("mod").value = childData['Membership']['MOD']) || 0
+				pointsField.innerText = "Total Points: " + totalPoints
+			})
+		})
+		
+		nameField.innerText = name
+
+		function saveChanges(){
+			database.ref(id + "/Membership").set({
+				SeptemberMeeting: document.getElementById("septmeeting").value ,
+				OctoberMeeting: document.getElementById("octmeeting").value ,
+				NovemberMeeting: document.getElementById("novmeeting").value ,
+				DecemberMeeting: document.getElementById("decmeeting").value ,
+				JanuaryMeeting:document.getElementById("janmeeting").value ,
+				FebruaryMeeting:document.getElementById("febmeeting").value ,
+				MarchMeeting:document.getElementById("marmeeting").value ,
+				AprilMeeting:document.getElementById("aprmeeting").value ,
+				MayMeeting:document.getElementById("maymeeting").value ,
+				JuneMeeting:document.getElementById("junmeeting").value ,
+				ParentMeeting:document.getElementById("parentmeeting").value ,
+				RCE:document.getElementById("rce").value ,
+				SLC:document.getElementById("slc").value ,
+				MOD:document.getElementById("mod").value 
+            })
+			
+		}
 	</script>
 
 <!--===============================================================================================-->	
