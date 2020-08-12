@@ -29,37 +29,43 @@
 </head>
 <body>
 	
-	<script>
-        function signInFunction() {
-            var signInFormObject = document.getElementById("signInFormObject");
-            alert('Called')
-            signInFormObject.submit();
-        }
-	</script>
-
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('static/signin/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('tracker/signin/images/bg-01.jpg');">
 			<div class="wrap-login100">
+				<!-- <form class="login100-form validate-form" action = "/signupform" method = "POST" id = "signUpFormObject"> -->
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-account-o"></i>
 					</span>
 
-					
 					<span class="login100-form-title p-b-34 p-t-27">
 						SBFBLA Membership Tracker
 					</span>
 
-					
+                    <div class="wrap-input100 validate-input" data-validate = "Enter Name">
+						<input class="input100" type="text" id="name" placeholder="Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter Grade">
+						<input class="input100" type="number" id="grade" placeholder="Grade">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input" data-validate = "Enter ID Number">
+						<input class="input100" type="number" id="idnumber" placeholder="ID Number">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter Email Address">
-						<input class="input100" type="text" id="emailaddress" placeholder="Username">
+						<input class="input100" type="email" id="emailaddress" placeholder="Email Address">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input class="input100" type="password" id="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
+                    </div>
+                    
 
 
 					<div class="contact100-form-checkbox">
@@ -70,24 +76,23 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<a>
-							<button class="login100-form-btn" id = "signinbutton" onclick="signIn()">
-								Sign In
+						<a >
+							<button class="login100-form-btn" id = "signupbutton" onclick="signUp()">
+								Sign Up
 							</button>
 						</a>
 					</div>     
 
-					<div class="w-full text-center">
-						<a href="signup.html" class="txt1">
-							Don't Have An Account Yet? Sign Up
+                    <div class="w-full text-center">
+						<a href="signin.html" class="txt1">
+							Already Have An Account? Sign In
 						</a>
 					</div>
-
 					
+				<!-- </form> -->
 			</div>
 		</div>
 	</div>
-    
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
 
@@ -119,23 +124,35 @@
 
         var emailField = document.getElementById("emailaddress")
         var passwordField = document.getElementById("password")
-     
+        var idField = document.getElementById("idnumber")
+        var gradeField = document.getElementById("grade")
+        var nameField = document.getElementById("name")
 
-        var signInButton = document.getElementById("signinbutton")
-        function signIn(){
+        var signUpButton = document.getElementById("signupbutton")
+        function signUp(){
+            var created = null
             var email = emailField.value
             var password = passwordField.value
-           
+            var id = idField.value
+            var grade = gradeField.value
+            var name = nameField.value
 
-            var promise = auth.signInWithEmailAndPassword(email,password)
+            var promise = auth.createUserWithEmailAndPassword(email,password)
             promise.catch(
                 e => alert(e.message),
+                created = false
             )
-                
+            // if(created == null){
+                database.ref(id).set({
+                    Name: name,
+                    Grade: grade,
+                    Email: email
+                })
                 window.location.replace("tracker/tracker.html");
         }
 
     </script>
+    
 
 	<div id="dropDownSelect1"></div>
 	
