@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>FBLA Membership</title>
+	<title>Membership</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -294,7 +294,6 @@
 				var totalPoints = 0
 
 				nameField.innerText = childData['Name']
-				pointsField.innerText = "Total Points: " + childData['TotalPoints']
 				totalPoints+=parseInt(document.getElementById("septmeeting").value = childData['Membership']['SeptemberMeeting']) || 0
 				totalPoints+=parseInt(document.getElementById("octmeeting").value = childData['Membership']['OctoberMeeting']) || 0
 				totalPoints+=parseInt(document.getElementById("novmeeting").value = childData['Membership']['NovemberMeeting']) || 0
@@ -331,8 +330,10 @@
 				RCE:document.getElementById("rce").value ,
 				SLC:document.getElementById("slc").value ,
 				MOD:document.getElementById("mod").value 
-            })
+			})
 			
+			alert("Your Membership Points have been saved Succesfully!")
+			location.reload()
 		}
 	</script>
 
