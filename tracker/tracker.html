@@ -270,6 +270,48 @@
 										<input type = "number" id = "fblaweek">
 									</div>
 								</div>	
+								<div class="row">
+									<div class="cell" data-title="Activity">
+										Pretzel Rod Fundraiser
+									</div>
+									<div class="cell" data-title="Date">
+										01/01/2021
+									</div>
+									<div class="cell" data-title="Points Available">
+										5
+									</div>
+									<div class="cell" data-title="Points Earned">
+										<input type = "number" id = "pretzel">
+									</div>
+								</div>		
+								<div class="row">
+									<div class="cell" data-title="Activity">
+										March of Dimes
+									</div>
+									<div class="cell" data-title="Date">
+										05/01/2021
+									</div>
+									<div class="cell" data-title="Points Available">
+										10
+									</div>
+									<div class="cell" data-title="Points Earned">
+										<input type = "number" id = "mod">
+									</div>
+								</div>	
+								<div class="row">
+									<div class="cell" data-title="Activity">
+										Member of the Quarter
+									</div>
+									<div class="cell" data-title="Date">
+										05/01/2021
+									</div>
+									<div class="cell" data-title="Points Available">
+										3
+									</div>
+									<div class="cell" data-title="Points Earned">
+										<input type = "number" id = "memberquarter">
+									</div>
+								</div>	
 							<div class="row header">
 								<div class="cell">
 									Competitive Events
@@ -476,41 +518,6 @@
 							</div>			
 							
 							
-							
-							
-							<div class="row">
-								<div class="cell" data-title="Activity">
-									Pretzel Rod Fundraiser
-								</div>
-								<div class="cell" data-title="Date">
-									01/01/2021
-								</div>
-								<div class="cell" data-title="Points Available">
-									5
-								</div>
-								<div class="cell" data-title="Points Earned">
-									<input type = "number" id = "pretzel">
-								</div>
-							</div>		
-								
-							
-							
-							
-							<div class="row">
-								<div class="cell" data-title="Activity">
-									March of Dimes
-								</div>
-								<div class="cell" data-title="Date">
-									05/01/2021
-								</div>
-								<div class="cell" data-title="Points Available">
-									10
-								</div>
-								<div class="cell" data-title="Points Earned">
-									<input type = "number" id = "mod">
-								</div>
-							</div>	
-							
 					</div>
 			</div>
 		</div>
@@ -563,26 +570,35 @@
 					document.getElementById("novmeeting").value = checkValid(childData['Membership']['NovemberMeeting'])
 					document.getElementById("decmeeting").value = checkValid(childData['Membership']['DecemberMeeting'])
 					document.getElementById("janmeeting").value = checkValid(childData['Membership']['JanuaryMeeting'])
-					document.getElementById("pretzel").value = checkValid(childData['Membership']['PretzelRods'])
 					document.getElementById("febmeeting").value = checkValid(childData['Membership']['FebruaryMeeting'])
 					document.getElementById("marmeeting").value = checkValid(childData['Membership']['MarchMeeting'])
 					document.getElementById("aprmeeting").value = checkValid(childData['Membership']['AprilMeeting'])
 					document.getElementById("maymeeting").value = checkValid(childData['Membership']['MayMeeting'])
 					document.getElementById("junmeeting").value = checkValid(childData['Membership']['JuneMeeting'])
 					document.getElementById("parentmeeting").value = checkValid(childData['Membership']['ParentMeeting'])
+
 					document.getElementById("rce").value = checkValid(childData['Membership']['RCE'])
 					document.getElementById("slc").value = checkValid(childData['Membership']['SLC'])
-					document.getElementById("mod").value = checkValid(childData['Membership']['MOD'])
+					document.getElementById("compprep").value = checkValid(childData['Membership']['CompetitionPreparation'])
+					document.getElementById("comppres").value = checkValid(childData['Membership']['CompetitionPresentation'])
+					document.getElementById("comptest").value = checkValid(childData['Membership']['CompetitionTest'])
+
 					document.getElementById("baafuture").value = checkValid(childData['Membership']['BAAFuture'])
 					document.getElementById("baabusiness").value = checkValid(childData['Membership']['BAABusiness'])
 					document.getElementById("baaleader").value = checkValid(childData['Membership']['BAALeader'])
 					document.getElementById("baaamerica").value = checkValid(childData['Membership']['BAAAmerica'])
+
 					document.getElementById("csacommunity").value = checkValid(childData['Membership']['CSACommunity'])
 					document.getElementById("csaservice").value = checkValid(childData['Membership']['CSAService'])
 					document.getElementById("csaachievement").value = checkValid(childData['Membership']['CSAAchievement'])
-					document.getElementById("compprep").value = checkValid(childData['Membership']['CompetitionPreparation'])
-					document.getElementById("comppres").value = checkValid(childData['Membership']['CompetitionPresentation'])
-					document.getElementById("comptest").value = checkValid(childData['Membership']['CompetitionTest'])
+					
+					document.getElementById("pretzel").value = checkValid(childData['Membership']['PretzelRods'])
+					document.getElementById("mod").value = checkValid(childData['Membership']['MOD'])
+					document.getElementById("quizbowl").value = checkValid(childData['Membership']['QuizBowl'])
+					document.getElementById("movienight").value = checkValid(childData['Membership']['MovieNight'])
+					document.getElementById("memberquarter").value = checkValid(childData['Membership']['MemberQuarter'])
+					document.getElementById("fblaweek").value = checkValid(childData['Membership']['FBLAWeek'])
+
 
 
 					pointsField.innerText = "Total Points: " + childData['TotalPoints']
@@ -606,26 +622,34 @@
 				NovemberMeeting: document.getElementById("novmeeting").value ,
 				DecemberMeeting: document.getElementById("decmeeting").value ,
 				JanuaryMeeting:document.getElementById("janmeeting").value ,
-				PretzelRods: document.getElementById("pretzel").value ,
 				FebruaryMeeting:document.getElementById("febmeeting").value ,
 				MarchMeeting:document.getElementById("marmeeting").value ,
 				AprilMeeting:document.getElementById("aprmeeting").value ,
 				MayMeeting:document.getElementById("maymeeting").value ,
 				JuneMeeting:document.getElementById("junmeeting").value ,
-				ParentMeeting:document.getElementById("parentmeeting").value ,
-				RCE:document.getElementById("rce").value ,
-				SLC:document.getElementById("slc").value ,
-				MOD:document.getElementById("mod").value ,
+				ParentMeeting:document.getElementById("parentmeeting").value ,				
+				
 				BAAFuture:document.getElementById("baafuture").value ,
 				BAABusiness:document.getElementById("baabusiness").value ,
 				BAALeader:document.getElementById("baaleader").value ,
 				BAAAmerica:document.getElementById("baaamerica").value ,
+				
 				CSACommunity:document.getElementById("csacommunity").value ,
 				CSAService:document.getElementById("csaservice").value ,
 				CSAAchievement:document.getElementById("csaachievement").value,
+				
+				RCE:document.getElementById("rce").value ,
+				SLC:document.getElementById("slc").value ,
 				CompetitionPreparation:document.getElementById("compprep").value ,
 				CompetitionPresentation:document.getElementById("comppres").value ,
-				CompetitionTest:document.getElementById("comptest").value 
+				CompetitionTest:document.getElementById("comptest").value,
+				
+				MOD:document.getElementById("mod").value ,
+				PretzelRods: document.getElementById("pretzel").value ,
+				MovieNight:document.getElementById("movienight").value,
+				FBLAWeek:document.getElementById("fblaweek").value ,
+				QuizBowl:document.getElementById("quizbowl").value ,
+				MemberQuarter:document.getElementById("memberquarter").value
 
 			})
 
