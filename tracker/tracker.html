@@ -287,32 +287,35 @@
 		
 		var nameField = document.getElementById("nameField")
 		var pointsField = document.getElementById("pointsField")
+		var totalPoints = 0
 
 		database.ref('/').once('value', function(snapshot){
 			snapshot.forEach(function(childSnapshot){
 				var childData = childSnapshot.val()
-				var totalPoints = 0
+				if(id == childSnapshot.key){
 
-				nameField.innerText = childData['Name']
-				document.getElementById("septmeeting").value = childData['Membership']['SeptemberMeeting']
-				document.getElementById("octmeeting").value = childData['Membership']['OctoberMeeting']
-				document.getElementById("novmeeting").value = childData['Membership']['NovemberMeeting']
-				document.getElementById("decmeeting").value = childData['Membership']['DecemberMeeting']
-				document.getElementById("janmeeting").value = childData['Membership']['JanuaryMeeting']
-				document.getElementById("febmeeting").value = childData['Membership']['FebruaryMeeting']
-				document.getElementById("marmeeting").value = childData['Membership']['MarchMeeting']
-				document.getElementById("aprmeeting").value = childData['Membership']['AprilMeeting']
-				document.getElementById("maymeeting").value = childData['Membership']['MayMeeting']
-				document.getElementById("junmeeting").value = childData['Membership']['JuneMeeting']
-				document.getElementById("parentmeeting").value = childData['Membership']['ParentMeeting']
-				document.getElementById("rce").value = childData['Membership']['RCE']
-				document.getElementById("slc").value = childData['Membership']['SLC']
-				document.getElementById("mod").value = childData['Membership']['MOD']
-				pointsField.innerText = "Total Points: " + childData['TotalPoints']
+					nameField.innerText = childData['Name']
+					alert(childData['Name'])
+					document.getElementById("septmeeting").value = childData['Membership']['SeptemberMeeting']
+					document.getElementById("octmeeting").value = childData['Membership']['OctoberMeeting']
+					document.getElementById("novmeeting").value = childData['Membership']['NovemberMeeting']
+					document.getElementById("decmeeting").value = childData['Membership']['DecemberMeeting']
+					document.getElementById("janmeeting").value = childData['Membership']['JanuaryMeeting']
+					document.getElementById("febmeeting").value = childData['Membership']['FebruaryMeeting']
+					document.getElementById("marmeeting").value = childData['Membership']['MarchMeeting']
+					document.getElementById("aprmeeting").value = childData['Membership']['AprilMeeting']
+					document.getElementById("maymeeting").value = childData['Membership']['MayMeeting']
+					document.getElementById("junmeeting").value = childData['Membership']['JuneMeeting']
+					document.getElementById("parentmeeting").value = childData['Membership']['ParentMeeting']
+					document.getElementById("rce").value = childData['Membership']['RCE']
+					document.getElementById("slc").value = childData['Membership']['SLC']
+					document.getElementById("mod").value = childData['Membership']['MOD']
+					pointsField.innerText = "Total Points: " + childData['TotalPoints']
+				}
+				
 			})
 		})
 		
-		nameField.innerText = name
 
 		function saveChanges(){
 			database.ref(id + "/Membership").set({
