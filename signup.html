@@ -57,7 +57,7 @@
                     </div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter Email Address">
-						<input class="input100" type="email" id="emailaddress" placeholder="Email Address">
+						<input class="input100" type="email" id="emailaddress" placeholder="School Email Address">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
@@ -144,7 +144,7 @@
             })
             if(created == true){
                 var encoded = window.btoa(id)
-                database.ref(id).set({
+                database.ref().child('/2020-21/' + id).set({
                     Name: name,
                     Grade: grade,
                     Email: email,

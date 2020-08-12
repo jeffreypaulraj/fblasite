@@ -32,6 +32,7 @@
 			<div class="wrap-table100">
 				<h1 id = "nameField">Name</h1>
 				<h3 id = "pointsField"> Your Total Points: 0</h3>
+				<button id = "submitButton" onclick="saveChanges()">Save Changes</button>
 
 					<div class="table" id = "table">
 
@@ -49,9 +50,18 @@
 								Points Earned
 							</div>
 						</div>
-						
-						<div class = "row" id = "tablebody"></div>
-							
+						<div class="row header">
+							<div class="cell">
+								General Meetings
+							</div>
+							<div class="cell">
+								
+							</div>
+							<div class="cell">
+							</div>
+							<div class="cell">
+							</div>
+						</div>
 							<div class="row">
 								<div class="cell" data-title="Activity">
 									September Meeting
@@ -63,7 +73,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "septmeeting">
+									<input type = "number" id = "septmeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -77,7 +87,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "octmeeting">
+									<input type = "number" id = "octmeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -91,7 +101,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "parentmeeting">
+									<input type = "number" id = "parentmeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -105,7 +115,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "novmeeting">
+									<input type = "number" id = "novmeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -119,21 +129,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "decmeeting">
-								</div>
-							</div>
-							<div class="row">
-								<div class="cell" data-title="Activity">
-									RCE Participation
-								</div>
-								<div class="cell" data-title="Date">
-									12/01/2020
-								</div>
-								<div class="cell" data-title="Points Available">
-									5
-								</div>
-								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "rce">
+									<input type = "number" id = "decmeeting">
 								</div>
 							</div>
 							<div class="row">
@@ -147,9 +143,9 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "janmeeting">
+									<input type = "number" id = "janmeeting">
 								</div>
-							</div>		
+							</div>	
 							<div class="row">
 								<div class="cell" data-title="Activity">
 									February Meeting
@@ -161,9 +157,9 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "febmeeting">
+									<input type = "number" id = "febmeeting">
 								</div>
-							</div>	
+							</div>
 							<div class="row">
 								<div class="cell" data-title="Activity">
 									March Meeting
@@ -175,21 +171,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "marmeeting">
-								</div>
-							</div>	
-							<div class="row">
-								<div class="cell" data-title="Activity">
-									SLC Participation
-								</div>
-								<div class="cell" data-title="Date">
-									03/01/2021
-								</div>
-								<div class="cell" data-title="Points Available">
-									5
-								</div>
-								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "slc">
+									<input type = "number" id = "marmeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -203,7 +185,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "aprmeeting">
+									<input type = "number" id = "aprmeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -217,21 +199,7 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "maymeeting">
-								</div>
-							</div>	
-							<div class="row">
-								<div class="cell" data-title="Activity">
-									March of Dimes
-								</div>
-								<div class="cell" data-title="Date">
-									05/01/2021
-								</div>
-								<div class="cell" data-title="Points Available">
-									10
-								</div>
-								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "mod">
+									<input type = "number" id = "maymeeting">
 								</div>
 							</div>	
 							<div class="row">
@@ -245,10 +213,304 @@
 									5
 								</div>
 								<div class="cell" data-title="Points Earned">
-									<input type = "text" id = "junmeeting">
+									<input type = "number" id = "junmeeting">
 								</div>
 							</div>	
-							<button id = "submitButton" onclick="saveChanges()">Save Changes</button>
+						<div class="row header">
+							<div class="cell">
+								Events
+							</div>
+							<div class="cell">
+								
+							</div>
+							<div class="cell">
+							</div>
+							<div class="cell">
+							</div>
+						</div>
+								<div class="row">
+									<div class="cell" data-title="Activity">
+										Quiz Bowl
+									</div>
+									<div class="cell" data-title="Date">
+										01/01/2021
+									</div>
+									<div class="cell" data-title="Points Available">
+										5
+									</div>
+									<div class="cell" data-title="Points Earned">
+										<input type = "number" id = "quizbowl">
+									</div>
+								</div>		
+								<div class="row">
+									<div class="cell" data-title="Activity">
+										Movie Night
+									</div>
+									<div class="cell" data-title="Date">
+										01/01/2021
+									</div>
+									<div class="cell" data-title="Points Available">
+										5
+									</div>
+									<div class="cell" data-title="Points Earned">
+										<input type = "number" id = "movienight">
+									</div>
+								</div>	
+								<div class="row">
+									<div class="cell" data-title="Activity">
+										FBLA Week
+									</div>
+									<div class="cell" data-title="Date">
+										01/01/2021
+									</div>
+									<div class="cell" data-title="Points Available">
+										5
+									</div>
+									<div class="cell" data-title="Points Earned">
+										<input type = "number" id = "fblaweek">
+									</div>
+								</div>	
+							<div class="row header">
+								<div class="cell">
+									Competitive Events
+								</div>
+								<div class="cell">
+									
+								</div>
+								<div class="cell">
+								</div>
+								<div class="cell">
+								</div>
+							</div>
+									<div class="row">
+										<div class="cell" data-title="Activity">
+											RCE Participation
+										</div>
+										<div class="cell" data-title="Date">
+											12/01/2020
+										</div>
+										<div class="cell" data-title="Points Available">
+											5
+										</div>
+										<div class="cell" data-title="Points Earned">
+											<input type = "number" id = "rce">
+										</div>
+									</div>
+									<div class="row">
+										<div class="cell" data-title="Activity">
+											SLC Participation
+										</div>
+										<div class="cell" data-title="Date">
+											03/01/2021
+										</div>
+										<div class="cell" data-title="Points Available">
+											5
+										</div>
+										<div class="cell" data-title="Points Earned">
+											<input type = "number" id = "slc">
+										</div>
+									</div>	
+									<div class="row">
+										<div class="cell" data-title="Activity">
+											Competitive Event Preparation
+										</div>
+										<div class="cell" data-title="Date">
+											03/01/2021
+										</div>
+										<div class="cell" data-title="Points Available">
+											5
+										</div>
+										<div class="cell" data-title="Points Earned">
+											<input type = "number" id = "compprep">
+										</div>
+									</div>
+									<div class="row">
+										<div class="cell" data-title="Activity">
+											Competitive Material: Presentation
+										</div>
+										<div class="cell" data-title="Date">
+											03/01/2021
+										</div>
+										<div class="cell" data-title="Points Available">
+											5
+										</div>
+										<div class="cell" data-title="Points Earned">
+											<input type = "number" id = "comppres">
+										</div>
+									</div>
+									<div class="row">
+										<div class="cell" data-title="Activity">
+											Competitive Material: Testing
+										</div>
+										<div class="cell" data-title="Date">
+											03/01/2021
+										</div>
+										<div class="cell" data-title="Points Available">
+											5
+										</div>
+										<div class="cell" data-title="Points Earned">
+											<input type = "number" id = "comptest">
+										</div>
+									</div>
+						<div class="row header">
+							<div class="cell">
+								Community Service Awards
+							</div>
+							<div class="cell">
+								
+							</div>
+							<div class="cell">
+							</div>
+							<div class="cell">
+							</div>
+						</div>
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									CSA Community
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "csacommunity">
+								</div>
+							</div>		
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									CSA Service
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "csaservice">
+								</div>
+							</div>		
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									CSA Achievement
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "csaachievement">
+								</div>
+							</div>	
+						<div class="row header">
+							<div class="cell">
+								Business Achievement Awards
+							</div>
+							<div class="cell">
+								
+							</div>
+							<div class="cell">
+							</div>
+							<div class="cell">
+							</div>
+						</div>
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									BAA Future
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "baafuture">
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									BAA Business
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "baabusiness">
+								</div>
+							</div>		
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									BAA Leader
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "baaleader">
+								</div>
+							</div>		
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									BAA America
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "baaamerica">
+								</div>
+							</div>			
+							
+							
+							
+							
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									Pretzel Rod Fundraiser
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									5
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "pretzel">
+								</div>
+							</div>		
+								
+							
+							
+							
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									March of Dimes
+								</div>
+								<div class="cell" data-title="Date">
+									05/01/2021
+								</div>
+								<div class="cell" data-title="Points Available">
+									10
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "mod">
+								</div>
+							</div>	
+							
 					</div>
 			</div>
 		</div>
@@ -289,40 +551,62 @@
 		var pointsField = document.getElementById("pointsField")
 		var totalPoints = 0
 
-		database.ref('/').once('value', function(snapshot){
+		database.ref('/2020-21').once('value', function(snapshot){
 			snapshot.forEach(function(childSnapshot){
 				var childData = childSnapshot.val()
 				if(id == childSnapshot.key){
 
+					
 					nameField.innerText = childData['Name']
-					document.getElementById("septmeeting").value = childData['Membership']['SeptemberMeeting']
-					document.getElementById("octmeeting").value = childData['Membership']['OctoberMeeting']
-					document.getElementById("novmeeting").value = childData['Membership']['NovemberMeeting']
-					document.getElementById("decmeeting").value = childData['Membership']['DecemberMeeting']
-					document.getElementById("janmeeting").value = childData['Membership']['JanuaryMeeting']
-					document.getElementById("febmeeting").value = childData['Membership']['FebruaryMeeting']
-					document.getElementById("marmeeting").value = childData['Membership']['MarchMeeting']
-					document.getElementById("aprmeeting").value = childData['Membership']['AprilMeeting']
-					document.getElementById("maymeeting").value = childData['Membership']['MayMeeting']
-					document.getElementById("junmeeting").value = childData['Membership']['JuneMeeting']
-					document.getElementById("parentmeeting").value = childData['Membership']['ParentMeeting']
-					document.getElementById("rce").value = childData['Membership']['RCE']
-					document.getElementById("slc").value = childData['Membership']['SLC']
-					document.getElementById("mod").value = childData['Membership']['MOD']
+					document.getElementById("septmeeting").value = checkValid(childData['Membership']['SeptemberMeeting'])
+					document.getElementById("octmeeting").value = checkValid(childData['Membership']['OctoberMeeting'])
+					document.getElementById("novmeeting").value = checkValid(childData['Membership']['NovemberMeeting'])
+					document.getElementById("decmeeting").value = checkValid(childData['Membership']['DecemberMeeting'])
+					document.getElementById("janmeeting").value = checkValid(childData['Membership']['JanuaryMeeting'])
+					document.getElementById("pretzel").value = checkValid(childData['Membership']['PretzelRods'])
+					document.getElementById("febmeeting").value = checkValid(childData['Membership']['FebruaryMeeting'])
+					document.getElementById("marmeeting").value = checkValid(childData['Membership']['MarchMeeting'])
+					document.getElementById("aprmeeting").value = checkValid(childData['Membership']['AprilMeeting'])
+					document.getElementById("maymeeting").value = checkValid(childData['Membership']['MayMeeting'])
+					document.getElementById("junmeeting").value = checkValid(childData['Membership']['JuneMeeting'])
+					document.getElementById("parentmeeting").value = checkValid(childData['Membership']['ParentMeeting'])
+					document.getElementById("rce").value = checkValid(childData['Membership']['RCE'])
+					document.getElementById("slc").value = checkValid(childData['Membership']['SLC'])
+					document.getElementById("mod").value = checkValid(childData['Membership']['MOD'])
+					document.getElementById("baafuture").value = checkValid(childData['Membership']['BAAFuture'])
+					document.getElementById("baabusiness").value = checkValid(childData['Membership']['BAABusiness'])
+					document.getElementById("baaleader").value = checkValid(childData['Membership']['BAALeader'])
+					document.getElementById("baaamerica").value = checkValid(childData['Membership']['BAAAmerica'])
+					document.getElementById("csacommunity").value = checkValid(childData['Membership']['CSACommunity'])
+					document.getElementById("csaservice").value = checkValid(childData['Membership']['CSAService'])
+					document.getElementById("csaachievement").value = checkValid(childData['Membership']['CSAAchievement'])
+					document.getElementById("compprep").value = checkValid(childData['Membership']['CompetitionPreparation'])
+					document.getElementById("comppres").value = checkValid(childData['Membership']['CompetitionPresentation'])
+					document.getElementById("comptest").value = checkValid(childData['Membership']['CompetitionTest'])
+
+
 					pointsField.innerText = "Total Points: " + childData['TotalPoints']
 				}
-				
+				function checkValid(checkString){
+					if(checkString == "undefined"){
+						return ""
+					}
+					else{
+						return checkString
+				}
+			}
 			})
 		})
 		
 
 		function saveChanges(){
-			database.ref(id + "/Membership").set({
+			database.ref("/2020-21/" + id + "/Membership").set({
 				SeptemberMeeting: document.getElementById("septmeeting").value ,
 				OctoberMeeting: document.getElementById("octmeeting").value ,
 				NovemberMeeting: document.getElementById("novmeeting").value ,
 				DecemberMeeting: document.getElementById("decmeeting").value ,
 				JanuaryMeeting:document.getElementById("janmeeting").value ,
+				PretzelRods: document.getElementById("pretzel").value ,
 				FebruaryMeeting:document.getElementById("febmeeting").value ,
 				MarchMeeting:document.getElementById("marmeeting").value ,
 				AprilMeeting:document.getElementById("aprmeeting").value ,
@@ -331,12 +615,33 @@
 				ParentMeeting:document.getElementById("parentmeeting").value ,
 				RCE:document.getElementById("rce").value ,
 				SLC:document.getElementById("slc").value ,
-				MOD:document.getElementById("mod").value 
+				MOD:document.getElementById("mod").value ,
+				BAAFuture:document.getElementById("baafuture").value ,
+				BAABusiness:document.getElementById("baabusiness").value ,
+				BAALeader:document.getElementById("baaleader").value ,
+				BAAAmerica:document.getElementById("baaamerica").value ,
+				CSACommunity:document.getElementById("csacommunity").value ,
+				CSAService:document.getElementById("csaservice").value ,
+				CSAAchievement:document.getElementById("csaachievement").value,
+				CompetitionPreparation:document.getElementById("compprep").value ,
+				CompetitionPresentation:document.getElementById("comppres").value ,
+				CompetitionTest:document.getElementById("comptest").value 
+
 			})
-			// database.ref(id).set({
-			// 	TotalPoints: totalPoints
-			// })
-			alert("Your Membership Points have been saved Succesfully!")
+
+			var totalPoints = 0
+			database.ref('/2020-21/'+id+'/Membership').once('value', function(snapshot){
+				snapshot.forEach(function(childSnapshot){
+					var childData = childSnapshot.val()
+					if(childData != "" && childData!= "undefined"){
+						totalPoints += parseInt(childData)
+					}
+				})
+			})
+
+			
+			database.ref().child('/2020-21/' + id).update({'TotalPoints': totalPoints})
+			alert("Your Membership Points have been saved Successfully!")
 			location.reload()
 		}
 	</script>
