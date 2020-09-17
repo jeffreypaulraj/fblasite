@@ -39,6 +39,8 @@
 				</span>
 				<select name="events" id="events">
 					<option value="SeptemberMeeting">September Meeting</option>
+					<option value="OctoberMeeting">October Meeting</option>
+
 				  </select>
 				<div class="wrap-input100" data-validate = "Please enter valid point value">
 					<input id="pointValue" class="input100" type="number" name="points" placeholder="Point value">
@@ -110,15 +112,27 @@
 		alert(password)
 		if(password == "sbfb23#%"){
 			for(idNum of idNumbersArray){
-				database.ref().child('/2020-21/' + idNum + "/Membership").update({selectedEvent: pointValue})
-				var pointsRef = database.ref('/2020-21/')
-				var databasePoints;
-				pointsRef.once("value").then(function(snapshot) {
-					databasePoints = snapshot.child(idNum + "/TotalPoints").val()
-					var totalPoints = currentPoints + databasePoints
+				alert(selectedEvent)
+				database.ref().child('/2020-21/' + idNum + "/Membership").update({[selectedEvent]: pointValue})
+				// var pointsRef = database.ref('/2020-21/')
+				// var databasePoints;
+				// pointsRef.once("value").then(function(snapshot) {
+				// 	databasePoints = snapshot.child(idNum + "/TotalPoints").val()
+				// 	var totalPoints = currentPoints + databasePoints
+				// 	database.ref().child('/2020-21/' + idNum).update({'TotalPoints': totalPoints})
+				// 	alert("Points Updated!")
+				// });
+
+				var totalPoints = 0
+				database.ref('/2020-21/'+idNum+'/Membership').once('value', function(snapshot){
+					snapshot.forEach(function(childSnapshot){
+						var childData = childSnapshot.val()
+						if(childData != "" && childData!= "undefined"){
+							totalPoints += parseInt(childData)
+						}
+					})
 					database.ref().child('/2020-21/' + idNum).update({'TotalPoints': totalPoints})
-					alert("Points Updated!")
-				});
+				})
 			}
 		}
 		else{
