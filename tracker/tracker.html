@@ -615,59 +615,58 @@
 		})
 		
 
-		function saveChanges(){
-			database.ref("/2020-21/" + id + "/Membership").set({
-				SeptemberMeeting: document.getElementById("septmeeting").value ,
-				OctoberMeeting: document.getElementById("octmeeting").value ,
-				NovemberMeeting: document.getElementById("novmeeting").value ,
-				DecemberMeeting: document.getElementById("decmeeting").value ,
-				JanuaryMeeting:document.getElementById("janmeeting").value ,
-				FebruaryMeeting:document.getElementById("febmeeting").value ,
-				MarchMeeting:document.getElementById("marmeeting").value ,
-				AprilMeeting:document.getElementById("aprmeeting").value ,
-				MayMeeting:document.getElementById("maymeeting").value ,
-				JuneMeeting:document.getElementById("junmeeting").value ,
-				ParentMeeting:document.getElementById("parentmeeting").value ,				
+		// function saveChanges(){
+		// 	database.ref("/2020-21/" + id + "/Membership").set({
+		// 		SeptemberMeeting: document.getElementById("septmeeting").value ,
+		// 		OctoberMeeting: document.getElementById("octmeeting").value ,
+		// 		NovemberMeeting: document.getElementById("novmeeting").value ,
+		// 		DecemberMeeting: document.getElementById("decmeeting").value ,
+		// 		JanuaryMeeting:document.getElementById("janmeeting").value ,
+		// 		FebruaryMeeting:document.getElementById("febmeeting").value ,
+		// 		MarchMeeting:document.getElementById("marmeeting").value ,
+		// 		AprilMeeting:document.getElementById("aprmeeting").value ,
+		// 		MayMeeting:document.getElementById("maymeeting").value ,
+		// 		JuneMeeting:document.getElementById("junmeeting").value ,
+		// 		ParentMeeting:document.getElementById("parentmeeting").value ,				
 				
-				BAAFuture:document.getElementById("baafuture").value ,
-				BAABusiness:document.getElementById("baabusiness").value ,
-				BAALeader:document.getElementById("baaleader").value ,
-				BAAAmerica:document.getElementById("baaamerica").value ,
+		// 		BAAFuture:document.getElementById("baafuture").value ,
+		// 		BAABusiness:document.getElementById("baabusiness").value ,
+		// 		BAALeader:document.getElementById("baaleader").value ,
+		// 		BAAAmerica:document.getElementById("baaamerica").value ,
 				
-				CSACommunity:document.getElementById("csacommunity").value ,
-				CSAService:document.getElementById("csaservice").value ,
-				CSAAchievement:document.getElementById("csaachievement").value,
+		// 		CSACommunity:document.getElementById("csacommunity").value ,
+		// 		CSAService:document.getElementById("csaservice").value ,
+		// 		CSAAchievement:document.getElementById("csaachievement").value,
 				
-				RCE:document.getElementById("rce").value ,
-				SLC:document.getElementById("slc").value ,
-				CompetitionPreparation:document.getElementById("compprep").value ,
-				CompetitionPresentation:document.getElementById("comppres").value ,
-				CompetitionTest:document.getElementById("comptest").value,
+		// 		RCE:document.getElementById("rce").value ,
+		// 		SLC:document.getElementById("slc").value ,
+		// 		CompetitionPreparation:document.getElementById("compprep").value ,
+		// 		CompetitionPresentation:document.getElementById("comppres").value ,
+		// 		CompetitionTest:document.getElementById("comptest").value,
 				
-				MOD:document.getElementById("mod").value ,
-				PretzelRods: document.getElementById("pretzel").value ,
-				MovieNight:document.getElementById("movienight").value,
-				FBLAWeek:document.getElementById("fblaweek").value ,
-				QuizBowl:document.getElementById("quizbowl").value ,
-				MemberQuarter:document.getElementById("memberquarter").value
+		// 		MOD:document.getElementById("mod").value ,
+		// 		PretzelRods: document.getElementById("pretzel").value ,
+		// 		MovieNight:document.getElementById("movienight").value,
+		// 		FBLAWeek:document.getElementById("fblaweek").value ,
+		// 		QuizBowl:document.getElementById("quizbowl").value ,
+		// 		MemberQuarter:document.getElementById("memberquarter").value
 
-			})
+		// 	})
 
-			var totalPoints = 0
-			database.ref('/2020-21/'+id+'/Membership').once('value', function(snapshot){
-				snapshot.forEach(function(childSnapshot){
-					var childData = childSnapshot.val()
-					if(childData != "" && childData!= "undefined"){
-						totalPoints += parseInt(childData)
-					}
-				})
-			})
-
+		// 	var totalPoints = 0
+		// 	database.ref('/2020-21/'+id+'/Membership').once('value', function(snapshot){
+		// 		snapshot.forEach(function(childSnapshot){
+		// 			var childData = childSnapshot.val()
+		// 			if(childData != "" && childData!= "undefined"){
+		// 				totalPoints += parseInt(childData)
+		// 			}
+		// 		})
+		// 	})
 			
-			database.ref().child('/2020-21/' + id).update({'TotalPoints': totalPoints})
-			alert("Your Membership Points have been saved Successfully!")
-			location.reload()
-		}
+		// 	database.ref().child('/2020-21/' + id).update({'TotalPoints': totalPoints})
+		// 	alert("Your Membership Points have been saved Successfully!")
+		// 	location.reload()
+		// }
 	</script>
 
 <!--===============================================================================================-->	

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Membership Admin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+	<div class="container-contact100">
+
+		<div class="wrap-contact100">
+			<!-- <form class="contact100-form validate-form"> -->
+				<span class="contact100-form-title">
+					Admin Membership Portal
+				</span>
+				<select name="events" id="events">
+					<option value="SeptemberMeeting">September Meeting</option>
+				  </select>
+				<div class="wrap-input100" data-validate = "Please enter valid point value">
+					<input id="pointValue" class="input100" type="number" name="points" placeholder="Point value">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<textarea class="input100" id = "idnumbers" name="idnumbers" placeholder="Include ID Numbers, separated by ;"></textarea>
+					<!-- <span class="focus-input100"></span> -->
+				</div>
+				
+				<div class="wrap-input100" data-validate = "Please enter valid password">
+					<input id="passwordField" class="input100" type="password" name="points" placeholder="Admin Password" >
+					<!-- <span class="focus-input100"></span> -->
+				</div>
+				
+
+				<div class="container-contact100-form-btn">
+					<button id = "submitButton" class="contact100-form-btn" onclick = "updatePoints()">
+						Update Points
+					</button>
+				</div>
+			<!-- </form> -->
+		</div>
+	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+
+
+	<script>
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	var firebaseConfig = {
+		apiKey: "AIzaSyA4b4CbFFviZWCbc7NlIoS0snf85ip0iaQ",
+		authDomain: "fbla-membership-tracker.firebaseapp.com",
+		databaseURL: "https://fbla-membership-tracker.firebaseio.com",
+		projectId: "fbla-membership-tracker",
+		storageBucket: "fbla-membership-tracker.appspot.com",
+		messagingSenderId: "64250080468",
+		appId: "1:64250080468:web:eb3b8fb0adee2c9f9b1f41",
+		measurementId: "G-2L6B2D1DCE"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+	const database = firebase.database()
+	
+	function updatePoints(){
+		var idNumbers = document.getElementById("idnumbers").value
+		var pointValue = document.getElementById("pointValue").value
+		var currentPoints;
+		try{
+			currentPoints = parseInt(pointValue)
+		}catch(e){
+			alert("Please enter a valid point value")
+		}
+
+		var idNumbersArray = idNumbers.split(";")
+		var idNum;
+		var eventList = document.getElementById("events")
+		var selectedEvent = eventList.options[eventList.selectedIndex].value
+		var password = document.getElementById("passwordField").value
+		alert(password)
+		if(password == "sbfb23#%"){
+			for(idNum of idNumbersArray){
+				database.ref().child('/2020-21/' + idNum + "/Membership").update({selectedEvent: pointValue})
+				var pointsRef = database.ref('/2020-21/')
+				var databasePoints;
+				pointsRef.once("value").then(function(snapshot) {
+					databasePoints = snapshot.child(idNum + "/TotalPoints").val()
+					var totalPoints = currentPoints + databasePoints
+					database.ref().child('/2020-21/' + idNum).update({'TotalPoints': totalPoints})
+					alert("Points Updated!")
+				});
+			}
+		}
+		else{
+			alert("Wrong password!")
+		}
+	}
+
+
+	</script>
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+	<script src="js/map-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+</body>
+</html>
