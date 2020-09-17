@@ -109,10 +109,8 @@
 		var eventList = document.getElementById("events")
 		var selectedEvent = eventList.options[eventList.selectedIndex].value
 		var password = document.getElementById("passwordField").value
-		alert(password)
 		if(password == "sbfb23#%"){
 			for(idNum of idNumbersArray){
-				alert(selectedEvent)
 				database.ref().child('/2020-21/' + idNum + "/Membership").update({[selectedEvent]: pointValue})
 				// var pointsRef = database.ref('/2020-21/')
 				// var databasePoints;
@@ -132,8 +130,10 @@
 						}
 					})
 					database.ref().child('/2020-21/' + idNum).update({'TotalPoints': totalPoints})
+					totalPoints = 0
 				})
 			}
+			alert("Points updated!")
 		}
 		else{
 			alert("Wrong password!")
