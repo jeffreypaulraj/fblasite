@@ -150,11 +150,10 @@
                 var promise = auth.createUserWithEmailAndPassword(email,password)
                 promise.then(function(result){
                     var encoded = window.btoa(id)
-                    database.ref().child('/2020-21/' + id).set({
-                        Name: name,
-                        Grade: grade,
-                        Email: email,
-                        TotalPoints: 0
+                    database.ref().child('/2020-21/' + id).update({
+                        'Name': name,
+                        'Grade': grade,
+                        'Email': email,
                     })
                     window.location.replace("tracker/tracker.html?id="+encoded);
                 })
