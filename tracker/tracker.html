@@ -228,6 +228,20 @@
 							<div class="cell">
 							</div>
 						</div>
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									Pumpkin Decorating
+								</div>
+								<div class="cell" data-title="Date">
+									10/31/2020
+								</div>
+								<div class="cell" data-title="Points Available">
+									3
+								</div>
+								<div class="cell" data-title="Points Earned">
+									<input type = "number" id = "pumpkindecorating" readonly>
+								</div>
+							</div>	
 								<div class="row">
 									<div class="cell" data-title="Activity">
 										Quiz Bowl
@@ -592,13 +606,13 @@
 					document.getElementById("csaservice").value = checkValid(childData['Membership']['CSAService'])
 					document.getElementById("csaachievement").value = checkValid(childData['Membership']['CSAAchievement'])
 					
+					document.getElementById("pumpkindecorating").value = checkValid(childData['Membership']['PumpkinDecorating'])
 					document.getElementById("pretzel").value = checkValid(childData['Membership']['PretzelRods'])
 					document.getElementById("mod").value = checkValid(childData['Membership']['MOD'])
 					document.getElementById("quizbowl").value = checkValid(childData['Membership']['QuizBowl'])
 					document.getElementById("movienight").value = checkValid(childData['Membership']['MovieNight'])
 					document.getElementById("memberquarter").value = checkValid(childData['Membership']['MemberQuarter'])
 					document.getElementById("fblaweek").value = checkValid(childData['Membership']['FBLAWeek'])
-
 
 
 					pointsField.innerText = "Total Points: " + childData['TotalPoints']
