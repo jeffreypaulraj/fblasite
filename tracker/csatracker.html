@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Membership</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+
+	
+	<div class="limiter">
+
+		<div class="container-table100">
+
+			<div class="wrap-table100">
+				<h1 id = "nameField">Name</h1>
+				<h3 id = "hoursField"> Your Total Hours: 0</h3>
+				<!-- <button style="color:red;" id = "submitButton" onclick="saveChanges()">Save Changes</button> -->
+				<!-- <h6> DISCLAIMER: If there are discrepancies between this tracker and the attendance document held by our SBFBLA advisors, the points reflected on the attendance document will be the accurate reflection of your total points.</h6> -->
+					<div class="table" id = "table">
+
+						<div class="row header">
+							<div class="cell">
+								Activity
+							</div>
+							<div class="cell">
+								Date
+							</div>
+							<div class="cell">
+								Hours Available
+							</div>
+							<div class="cell">
+								Hours Earned
+							</div>
+						</div>
+						<div class="row header">
+							<div class="cell">
+								Service Opportunities
+							</div>
+							<div class="cell">
+								
+							</div>
+							<div class="cell">
+							</div>
+							<div class="cell">
+							</div>
+						</div>
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									Demo Event
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Hours Available">
+									3
+								</div>
+								<div class="cell" data-title="Hours Earned">
+									<input type = "number" id = "demoevent" readonly>
+								</div>
+							</div>	
+							
+					</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+	
+	<script>
+	    // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA4b4CbFFviZWCbc7NlIoS0snf85ip0iaQ",
+            authDomain: "fbla-membership-tracker.firebaseapp.com",
+            databaseURL: "https://fbla-membership-tracker.firebaseio.com",
+            projectId: "fbla-membership-tracker",
+            storageBucket: "fbla-membership-tracker.appspot.com",
+            messagingSenderId: "64250080468",
+            appId: "1:64250080468:web:8789ad51d5f91f599b1f41",
+            measurementId: "G-V6N9YLF1NK"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const auth = firebase.auth();
+        const database = firebase.database()
+
+       
+		var encoded = parent.document.URL.substring(parent.document.URL.indexOf('id=') + 3, parent.document.URL.length)
+		var id = window.atob(encoded)
+		
+		var nameField = document.getElementById("nameField")
+		var hoursField = document.getElementById("hoursField")
+		var totalHours = 0
+
+		database.ref('/2020-21').once('value', function(snapshot){
+			snapshot.forEach(function(childSnapshot){
+				var childData = childSnapshot.val()
+				if(id == childSnapshot.key){
+
+					
+					nameField.innerText = childData['Name']
+					document.getElementById("demoevent").value = checkValid(childData['CommunityService']['DemoEvent'])
+					
+
+					hoursField.innerText = "";
+					// hoursField.innerText = "Total Hours: " + childData['TotalHours']
+				}
+				function checkValid(checkString){
+					if(checkString == "undefined"){
+						return ""
+					}
+					else{
+						return checkString
+					}
+				}
+			})
+		})
+		
+
+		// function saveChanges(){
+		// 	database.ref("/2020-21/" + id + "/Membership").set({
+		// 		SeptemberMeeting: document.getElementById("septmeeting").value ,
+		// 		OctoberMeeting: document.getElementById("octmeeting").value ,
+		// 		NovemberMeeting: document.getElementById("novmeeting").value ,
+		// 		DecemberMeeting: document.getElementById("decmeeting").value ,
+		// 		JanuaryMeeting:document.getElementById("janmeeting").value ,
+		// 		FebruaryMeeting:document.getElementById("febmeeting").value ,
+		// 		MarchMeeting:document.getElementById("marmeeting").value ,
+		// 		AprilMeeting:document.getElementById("aprmeeting").value ,
+		// 		MayMeeting:document.getElementById("maymeeting").value ,
+		// 		JuneMeeting:document.getElementById("junmeeting").value ,
+		// 		ParentMeeting:document.getElementById("parentmeeting").value ,				
+				
+		// 		BAAFuture:document.getElementById("baafuture").value ,
+		// 		BAABusiness:document.getElementById("baabusiness").value ,
+		// 		BAALeader:document.getElementById("baaleader").value ,
+		// 		BAAAmerica:document.getElementById("baaamerica").value ,
+				
+		// 		CSACommunity:document.getElementById("csacommunity").value ,
+		// 		CSAService:document.getElementById("csaservice").value ,
+		// 		CSAAchievement:document.getElementById("csaachievement").value,
+				
+		// 		RCE:document.getElementById("rce").value ,
+		// 		SLC:document.getElementById("slc").value ,
+		// 		CompetitionPreparation:document.getElementById("compprep").value ,
+		// 		CompetitionPresentation:document.getElementById("comppres").value ,
+		// 		CompetitionTest:document.getElementById("comptest").value,
+				
+		// 		MOD:document.getElementById("mod").value ,
+		// 		PretzelRods: document.getElementById("pretzel").value ,
+		// 		MovieNight:document.getElementById("movienight").value,
+		// 		FBLAWeek:document.getElementById("fblaweek").value ,
+		// 		QuizBowl:document.getElementById("quizbowl").value ,
+		// 		MemberQuarter:document.getElementById("memberquarter").value
+
+		// 	})
+
+		// 	var totalPoints = 0
+		// 	database.ref('/2020-21/'+id+'/Membership').once('value', function(snapshot){
+		// 		snapshot.forEach(function(childSnapshot){
+		// 			var childData = childSnapshot.val()
+		// 			if(childData != "" && childData!= "undefined"){
+		// 				totalPoints += parseInt(childData)
+		// 			}
+		// 		})
+		// 	})
+			
+		// 	database.ref().child('/2020-21/' + id).update({'TotalPoints': totalPoints})
+		// 	alert("Your Membership Points have been saved Successfully!")
+		// 	location.reload()
+		// }
+	</script>
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

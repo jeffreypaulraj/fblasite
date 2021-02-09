@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Membership</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="tracker/signin/images/icons/fbla_favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tracker/signin/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tracker/signin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tracker/signin/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tracker/signin/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="tracker/signin/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tracker/signin/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tracker/signin/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="tracker/signin/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tracker/signin/css/util.css">
+	<link rel="stylesheet" type="text/css" href="tracker/signin/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<script>
+        function signInFunction() {
+            var signInFormObject = document.getElementById("signInFormObject");
+            alert('Called')
+            signInFormObject.submit();
+        }
+	</script>
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('tracker/signin/images/bg-01.jpg');">
+			<div class="wrap-login100">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-account-o"></i>
+					</span>
+
+					
+					<span class="login100-form-title p-b-34 p-t-27">
+						SBFBLA Community Service Hours Tracker
+					</span>
+
+					
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter Email Address">
+						<input class="input100" type="text" id="emailaddress" placeholder="School Email Address">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" id="password" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<a>
+							<button class="login100-form-btn" id = "signinbutton" onclick="signIn()">
+								Sign In
+							</button>
+						</a>
+					</div>     
+
+					<div class="w-full text-center">
+						<a href="signup.html" class="txt1">
+							Don't Have An Account Yet? Sign Up
+						</a>
+					</div>
+
+					
+			</div>
+		</div>
+	</div>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+
+
+
+	<script>
+	    // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA4b4CbFFviZWCbc7NlIoS0snf85ip0iaQ",
+            authDomain: "fbla-membership-tracker.firebaseapp.com",
+            databaseURL: "https://fbla-membership-tracker.firebaseio.com",
+            projectId: "fbla-membership-tracker",
+            storageBucket: "fbla-membership-tracker.appspot.com",
+            messagingSenderId: "64250080468",
+            appId: "1:64250080468:web:8789ad51d5f91f599b1f41",
+            measurementId: "G-V6N9YLF1NK"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const auth = firebase.auth();
+        const database = firebase.database()
+
+        var emailField = document.getElementById("emailaddress")
+        var passwordField = document.getElementById("password")
+     
+
+        var signInButton = document.getElementById("signinbutton")
+        function signIn(){
+            var worked = true
+            var email = emailField.value
+            var password = passwordField.value
+           
+
+            var promise = auth.signInWithEmailAndPassword(email,password)
+            promise.then(function(result){
+                var id = email.slice(0,8)
+                var encoded = btoa(id)
+                window.location.replace("csatracker/csatracker.html?id=" + encoded);
+            })
+            .catch( function(e) {
+                alert(e.message)
+                worked = false
+            })
+            
+        }
+
+    </script>
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="tracker/signin/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="tracker/signin/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="tracker/signin/vendor/bootstrap/js/popper.js"></script>
+	<script src="tracker/signin/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="tracker/signin/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="tracker/signin/vendor/daterangepicker/moment.min.js"></script>
+	<script src="tracker/signin/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="tracker/signin/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="tracker/signin/js/main.js"></script>
+
+</body>
+</html>
