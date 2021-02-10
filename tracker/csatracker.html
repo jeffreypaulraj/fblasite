@@ -64,7 +64,7 @@
 						</div>
 							<div class="row">
 								<div class="cell" data-title="Activity">
-									Demo Event
+									Pumpkin Decorating Event
 								</div>
 								<div class="cell" data-title="Date">
 									01/01/2021
@@ -73,7 +73,49 @@
 									3
 								</div>
 								<div class="cell" data-title="Hours Earned">
-									<input type = "number" id = "demoevent" readonly>
+									<input type = "number" id = "pumpkindecorating" readonly>
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									Community Service Competitive Event Cards
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Hours Available">
+									3
+								</div>
+								<div class="cell" data-title="Hours Earned">
+									<input type = "number" id = "compeventcards" readonly>
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									Operation Uplift
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Hours Available">
+									3
+								</div>
+								<div class="cell" data-title="Hours Earned">
+									<input type = "number" id = "operationuplift" readonly>
+								</div>
+							</div>	
+							<div class="row">
+								<div class="cell" data-title="Activity">
+									Operation Uplift Fundraising/Cards
+								</div>
+								<div class="cell" data-title="Date">
+									01/01/2021
+								</div>
+								<div class="cell" data-title="Hours Available">
+									3
+								</div>
+								<div class="cell" data-title="Hours Earned">
+									<input type = "number" id = "operationupliftcards" readonly>
 								</div>
 							</div>	
 							
@@ -124,8 +166,11 @@
 
 					
 					nameField.innerText = childData['Name']
-					document.getElementById("demoevent").value = checkValid(childData['CommunityService']['DemoEvent'])
-					
+					document.getElementById("pumpkindecorating").value = checkValid(childData['CommunityService']['PumpkinDecorating'])
+					document.getElementById("compeventcards").value = checkValid(childData['CommunityService']['CompEventCards'])
+					document.getElementById("operationuplift").value = checkValid(childData['CommunityService']['OperationUplift'])
+					document.getElementById("operationupliftcards").value = checkValid(childData['CommunityService']['OperationUpliftCards'])
+
 
 					hoursField.innerText = "";
 					// hoursField.innerText = "Total Hours: " + childData['TotalHours']
