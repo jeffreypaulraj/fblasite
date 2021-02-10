@@ -132,7 +132,7 @@
             promise.then(function(result){
                 var id = email.slice(0,8)
                 var encoded = btoa(id)
-                window.location.replace("csatracker/csatracker.html?id=" + encoded);
+                window.location.replace("tracker/csatracker.html?id=" + encoded);
             })
             .catch( function(e) {
                 alert(e.message)
