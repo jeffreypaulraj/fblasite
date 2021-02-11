@@ -26,6 +26,7 @@
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
+				<select name = "events" id = "events"></select>
 				<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="javascript:getCompetitionResources();" class="btn btn-primary btn-outline-white px-5 py-3">Submit</a></p>					  
 
 				<div class="table100 ver6 m-b-110">
@@ -62,47 +63,51 @@
 			</div>
 		</div>
 		<script>
+			var tableObject = document.getElementById("tableObject");
+			var eventsDropDown = document.getElementById("events");
+			var sheetLink = "https://spreadsheets.google.com/feeds/cells/1vkoANkExbw0B2wUAlcnS1FtjKkVLe9xytAEURtUWnYc/1/public/full?alt=json";
+			var placedArray = []
+			var competitionArray = []
+			var linkArray = []
+			var descriptionArray = []
+			fetch(sheetLink).then(res => res.json()).then((data) => {
+				var entryArray = data["feed"]["entry"]
+			
+				for(var i = 5; i < entryArray.length; i+=5){
+					competitionArray.push(entryArray[i + 1]["content"]["$t"])
+					placedArray.push(entryArray[i + 2]["content"]["$t"] + "\t\t\t")
+					linkArray.push(entryArray[i + 3]["content"]["$t"] )
+					descriptionArray.push(entryArray[i+4]["content"]["$t"])
+					
+				}
+				for(var i = 0; i < competitionArray.length; i++){
+					var el = document.createElement("option")
+					el.textContent = competitionArray[i]
+					el.value = competitionArray[i]
+					eventsDropDown.add(el)
+					
+				}
+			}).catch(err => { throw err });			
+			
 			function getCompetitionResources() {
-				var tableObject = document.getElementById("tableObject");
-				var sheetLink = "https://spreadsheets.google.com/feeds/cells/1vkoANkExbw0B2wUAlcnS1FtjKkVLe9xytAEURtUWnYc/1/public/full?alt=json";
-				fetch(sheetLink).then(res => res.json()).then((data) => {
-					var entryArray = data["feed"]["entry"]
-					var placedArray = []
-					var competitionArray = []
-					var linkArray = []
-					var descriptionArray = []
-					for(var i = 5; i < entryArray.length; i+=5){
-						competitionArray.push(entryArray[i + 1]["content"]["$t"])
-						placedArray.push(entryArray[i + 2]["content"]["$t"] + "\t\t\t")
-						linkArray.push(entryArray[i + 3]["content"]["$t"] )
-						descriptionArray.push(entryArray[i+4]["content"]["$t"])
-					}
-					var rowCount = 0;
-					for(var i = 0; i < competitionArray.length; i++){
-						var row = tableObject.insertRow(i + 1);
-						var cellOne = row.insertCell(0);
-						cellOne.innerHTML = competitionArray[i]
+				for(var i = 1; i < tableObject.rows.length; i++){
+					tableObject.deleteRow(1);
+				}
+				var count = 0;
+				for(var i = 0; i < competitionArray.length; i++){
+					var row = tableObject.insertRow(i + 1);
+					var cellOne = row.insertCell(0);
+					cellOne.innerHTML = competitionArray[i]
 
-						var cellTwo = row.insertCell(1);
-						cellTwo.innerHTML = placedArray[i]
+					var cellTwo = row.insertCell(1);
+					cellTwo.innerHTML = placedArray[i]
 
-						var cellThree = row.insertCell(2);
-						cellThree.innerHTML = linkArray[i]
+					var cellThree = row.insertCell(2);
+					cellThree.innerHTML = linkArray[i]
 
-						var cellFour = row.insertCell(3);
-						cellFour.innerHTML = descriptionArray[i]
-					}
-
-
-				})
-				.catch(err => { throw err });
-				// var competitionName = document.getElementById("competitionNameEntered").innerText;
-
-
-				// for(var i = 0; i < 5; i++){
-				// 	htmltext+="<tr> <td class='column2'>" + "test" + "</td> <td class='column2'></td><td class='column2'></td><td class='column4'></td> <td class='column4'>Description Placeholder</td></tr>";
-				// }
-				// insertHTML("tableObject",htmltext);
+					var cellFour = row.insertCell(3);
+					cellFour.innerHTML = descriptionArray[i]
+				}
 			}
 		</script>
 	</div>
