@@ -123,6 +123,9 @@
 						count = count + 1
 					}
 				}
+				for(var i = tableObject.rows.length; i > count; i--){
+					tableObject.deleteRow(i);
+				}
 			}
 		</script>
 	</div>
