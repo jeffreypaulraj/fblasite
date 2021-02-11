@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>FBLA Competitive Event Resources</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/Users/jeffrey/Documents/GitHub/fblasite/img/fblalogo.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body style="background-color:powderblue;">
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="javascript:getCompetitionResources();" class="btn btn-primary btn-outline-white px-5 py-3">Submit</a></p>					  
+
+				<div class="table100 ver6 m-b-110">
+					<table data-vertable="ver6" id = "tableObject">
+						<thead>
+							<tr class="row100 head">
+								<th class="column100 column1" data-column="column1">Event Name</th>
+								<th class="column100 column2" data-column="column2">Placed?</th>
+								<th class="column100 column3" data-column="column3">Link</th>
+								<th class="column100 column4" data-column="column4">Description</th>
+							
+							</tr>
+						</thead>
+						<tbody>
+							<!-- <tr class="row100">
+								<td class="column100 column1" data-column="column1">Lawrence Scott</td>
+								<td class="column100 column2" data-column="column2">8:00 AM</td>
+								<td class="column100 column3" data-column="column3">--</td>
+								<td class="column100 column4" data-column="column4">--</td>
+								
+							</tr>
+
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">Jane Medina</td>
+								<td class="column100 column2" data-column="column2">--</td>
+								<td class="column100 column3" data-column="column3">5:00 PM</td>
+								<td class="column100 column4" data-column="column4">5:00 PM</td>
+							
+							</tr> -->
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			function getCompetitionResources() {
+				var tableObject = document.getElementById("tableObject");
+				var sheetLink = "https://spreadsheets.google.com/feeds/cells/1vkoANkExbw0B2wUAlcnS1FtjKkVLe9xytAEURtUWnYc/1/public/full?alt=json";
+				fetch(sheetLink).then(res => res.json()).then((data) => {
+					var entryArray = data["feed"]["entry"]
+					var placedArray = []
+					var competitionArray = []
+					var linkArray = []
+					var descriptionArray = []
+					for(var i = 5; i < entryArray.length; i+=5){
+						competitionArray.push(entryArray[i + 1]["content"]["$t"])
+						placedArray.push(entryArray[i + 2]["content"]["$t"] + "\t\t\t")
+						linkArray.push(entryArray[i + 3]["content"]["$t"] )
+						descriptionArray.push(entryArray[i+4]["content"]["$t"])
+					}
+					var rowCount = 0;
+					for(var i = 0; i < competitionArray.length; i++){
+						var row = tableObject.insertRow(i + 1);
+						var cellOne = row.insertCell(0);
+						cellOne.innerHTML = competitionArray[i]
+
+						var cellTwo = row.insertCell(1);
+						cellTwo.innerHTML = placedArray[i]
+
+						var cellThree = row.insertCell(2);
+						cellThree.innerHTML = linkArray[i]
+
+						var cellFour = row.insertCell(3);
+						cellFour.innerHTML = descriptionArray[i]
+					}
+
+
+				})
+				.catch(err => { throw err });
+				// var competitionName = document.getElementById("competitionNameEntered").innerText;
+
+
+				// for(var i = 0; i < 5; i++){
+				// 	htmltext+="<tr> <td class='column2'>" + "test" + "</td> <td class='column2'></td><td class='column2'></td><td class='column4'></td> <td class='column4'>Description Placeholder</td></tr>";
+				// }
+				// insertHTML("tableObject",htmltext);
+			}
+		</script>
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
