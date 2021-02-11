@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/Users/jeffrey/Documents/GitHub/fblasite/img/fblalogo.png"/>
+	<link rel="icon" type="image/png" href="fblalogo.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -70,43 +70,58 @@
 			var competitionArray = []
 			var linkArray = []
 			var descriptionArray = []
+			var dropdownArray = []
 			fetch(sheetLink).then(res => res.json()).then((data) => {
 				var entryArray = data["feed"]["entry"]
 			
 				for(var i = 5; i < entryArray.length; i+=5){
 					competitionArray.push(entryArray[i + 1]["content"]["$t"])
+					dropdownArray.push(entryArray[i + 1]["content"]["$t"])
 					placedArray.push(entryArray[i + 2]["content"]["$t"] + "\t\t\t")
 					linkArray.push(entryArray[i + 3]["content"]["$t"] )
 					descriptionArray.push(entryArray[i+4]["content"]["$t"])
 					
 				}
-				for(var i = 0; i < competitionArray.length; i++){
+
+				for(var i = dropdownArray.length -1; i>= 0; i--){
+					if(i != dropdownArray.indexOf(dropdownArray[i])){
+						dropdownArray.splice(i,1)
+					}
+				}
+
+				for(var i = 0; i < dropdownArray.length; i++){
 					var el = document.createElement("option")
-					el.textContent = competitionArray[i]
-					el.value = competitionArray[i]
+					el.textContent = dropdownArray[i]
+					el.value = dropdownArray[i]
 					eventsDropDown.add(el)
 					
 				}
 			}).catch(err => { throw err });			
 			
 			function getCompetitionResources() {
+				var selectedEvent = eventsDropDown.options[eventsDropDown.selectedIndex].value
+
 				for(var i = 1; i < tableObject.rows.length; i++){
 					tableObject.deleteRow(1);
 				}
-				var count = 0;
+				var count = 1;
 				for(var i = 0; i < competitionArray.length; i++){
-					var row = tableObject.insertRow(i + 1);
-					var cellOne = row.insertCell(0);
-					cellOne.innerHTML = competitionArray[i]
+					if(competitionArray[i] === selectedEvent){
+						var row = tableObject.insertRow(count);
+						var cellOne = row.insertCell(0);
+						cellOne.innerHTML = competitionArray[i]
 
-					var cellTwo = row.insertCell(1);
-					cellTwo.innerHTML = placedArray[i]
+						var cellTwo = row.insertCell(1);
+						cellTwo.innerHTML = placedArray[i]
 
-					var cellThree = row.insertCell(2);
-					cellThree.innerHTML = linkArray[i]
+						var cellThree = row.insertCell(2);
+						cellThree.innerHTML = linkArray[i]
 
-					var cellFour = row.insertCell(3);
-					cellFour.innerHTML = descriptionArray[i]
+						var cellFour = row.insertCell(3);
+						cellFour.innerHTML = descriptionArray[i]
+						
+						count = count + 1
+					}
 				}
 			}
 		</script>
