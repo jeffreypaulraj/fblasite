@@ -74,7 +74,7 @@
 			fetch(sheetLink).then(res => res.json()).then((data) => {
 				var entryArray = data["feed"]["entry"]
 			
-				for(var i = 5; i < entryArray.length; i+=5){
+				for(var i = 6; i < entryArray.length; i+=6){
 					competitionArray.push(entryArray[i + 1]["content"]["$t"])
 					dropdownArray.push(entryArray[i + 1]["content"]["$t"])
 					placedArray.push(entryArray[i + 2]["content"]["$t"] + "\t\t\t")
