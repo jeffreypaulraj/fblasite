@@ -99,7 +99,7 @@ iframe {
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-  background: #d1d1d1;
+  background:rgb(176, 224, 230);
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -120,7 +120,7 @@ iframe {
 [ Table ]*/
 table {
   width: 100%;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
 }
 
 th, td {

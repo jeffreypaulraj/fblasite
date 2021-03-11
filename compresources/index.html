@@ -20,14 +20,116 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<style>
+	.button {
+	  border: none;
+	  color: white;
+	  padding: 16px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  transition-duration: 0.4s;
+	  cursor: pointer;
+	}
+	
+	.button1:hover {
+	  background-color: #7918f2;
+	  color: white;
+	  border-radius: 25px;
+	  border: 2px solid #4CAF50;
+	}
+	
+	.button1 {
+	  background-color: #4801ff;
+	  border-radius: 25px;
+	  color: white;
+	}
+	
+	.button2 {
+	  background-color: white;
+	  color: white;
+	  border-radius: 25px;
+	  border: 2px solid #008CBA;
+	}
+	
+	.button2:hover {
+	  background-color: #008CBA;
+	  color: white;
+	  border-radius: 25px;
+
+	}
+	
+	.custom-select {
+	position: relative;
+	font-family: Arial;
+	}
+
+	.custom-select select {
+	display: none; /*hide original SELECT element: */
+	}
+
+	.select-selected {
+	background-color: DodgerBlue;
+	}
+
+	/* Style the arrow inside the select element: */
+	.select-selected:after {
+	position: absolute;
+	content: "";
+	top: 14px;
+	right: 10px;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-color: #fff transparent transparent transparent;
+	}
+
+	/* Point the arrow upwards when the select box is open (active): */
+	.select-selected.select-arrow-active:after {
+	border-color: transparent transparent #fff transparent;
+	top: 7px;
+	}
+
+	/* style the items (options), including the selected item: */
+	.select-items div,.select-selected {
+	color: #ffffff;
+	padding: 8px 16px;
+	border: 1px solid transparent;
+	border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+	cursor: pointer;
+	}
+
+	/* Style items (options): */
+	.select-items {
+	position: absolute;
+	background-color: DodgerBlue;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	}
+
+	/* Hide the items when the select box is closed: */
+	.select-hide {
+	display: none;
+	}
+
+	.select-items div:hover, .same-as-selected {
+	background-color: rgba(0, 0, 0, 0.1);
+	}
+</style>
 </head>
 <body style="background-color:powderblue;">
 	
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-				<select name = "events" id = "events"></select>
-				<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="javascript:getCompetitionResources();" class="btn btn-primary btn-outline-white px-5 py-3">Submit</a></p>					  
+				<select class = "custom-select"name = "events" id = "events"></select>
+				<!-- <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="javascript:getCompetitionResources();" class="btn btn-primary btn-outline-white px-5 py-3">Get Resources</a></p>  -->
+				<button class = "button button1" onclick="javascript:getCompetitionResources();">Get Resources</button>
+
 
 				<div class="table100 ver6 m-b-110">
 					<table data-vertable="ver6" id = "tableObject">
@@ -60,6 +162,7 @@
 						</tbody>
 					</table>
 				</div>
+				<button class = "button button2"><a href="https://forms.gle/KwXT5EUFo8SCV8n9A">Add Resources</a></button>
 			</div>
 		</div>
 		<script>
